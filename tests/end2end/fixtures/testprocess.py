@@ -80,9 +80,7 @@ def _render_log(data, threshold=100):
     data = [str(d) for d in data]
     is_exception = any('Traceback (most recent call last):' in line
                        for line in data)
-    # FIXME do not merge
-    # verbose = pytest.config.getoption('--verbose')
-    verbose = True
+    verbose = pytest.config.getoption('--verbose')
     if len(data) > threshold and not verbose and not is_exception:
         msg = '[{} lines suppressed, use -v to show]'.format(
             len(data) - threshold)
